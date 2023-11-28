@@ -36,7 +36,7 @@ export function MovieProvider({ children }) {
 
   const filteredGenre = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${activegenre}&api_key=${APIKEY}&with_origin_country=VN&page=${page}`,
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${activegenre}&api_key=${APIKEY}&with_origin_country=VN&language=vi-VN&page=${page}`,
     )
     const filteredGenre = await data.json()
     setMovies(movies.concat(filteredGenre.results)) // Concat new movies with previous movies, on genre change movies are reset to [] so that only movies of new genre will appear, check out useEffect on top for more information.
@@ -65,7 +65,7 @@ export function MovieProvider({ children }) {
 
   const fetchTrending = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${APIKEY}&with_origin_country=VN&page=${page}`,
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${APIKEY}&with_origin_country=VN&language=vi-VN&page=${page}`,
     )
     const trend = await data.json()
     setTrending(trending.concat(trend.results))
